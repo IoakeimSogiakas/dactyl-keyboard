@@ -20,6 +20,7 @@ shape_config = {
 
     'save_dir': '.',
     'config_name':  "SGEN_cadquery",
+#hi
 
     'show_caps': False, #MX
     'show_pcbs': False, #only runs if caps are shown, easist place to initially inject geometry
