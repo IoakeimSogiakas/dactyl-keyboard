@@ -10,8 +10,8 @@ r2d = 180 / pi
 
 shape_config = {
 
-    'ENGINE': 'solid',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
-    # 'ENGINE': 'cadquery',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
+    # 'ENGINE': 'solid',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
+     'ENGINE': 'cadquery',  # 'solid' = solid python / OpenSCAD, 'cadquery' = cadquery / OpenCascade
 
 
     ######################
@@ -19,9 +19,9 @@ shape_config = {
     ######################
 
     'save_dir': '.',
-    'config_name':  "DM",
+    'config_name':  "SGEN_cadquery",
 
-    'show_caps': 'MX',
+    'show_caps': False, #MX
     'show_pcbs': False, #only runs if caps are shown, easist place to initially inject geometry
 
     'nrows':  5, #5,  # key rows
@@ -31,7 +31,7 @@ shape_config = {
     'beta':  pi / 36.0,  # curvature of the rows
     'centercol':  3,  # controls left_right tilt / tenting (higher number is more tenting)
     'centerrow_offset':  3,  # rows from max, controls front_back tilt
-    'tenting_angle':  pi / 12.0,  # or, change this for more precise tenting control
+    'tenting_angle':  pi / 15.0,  # or, change this for more precise tenting control
 
     # symmetry states if it is a symmetric or asymmetric bui.  If asymmetric it doubles the generation time.
     'symmetry':  "symmetric",  # "asymmetric" or "symmetric"
@@ -39,7 +39,7 @@ shape_config = {
     'column_style_gt5':  "orthographic",
     'column_style':  "standard",  # options include :standard, :orthographic, and :fixed
     'reduced_inner_cols': 2,  #currently supports 0 or 2 due to thumb cluster attachment
-    'reduced_outer_cols': 0,
+    'reduced_outer_cols': 2,
 
 
     'thumb_offsets':  [6, -3, 7],
@@ -236,24 +236,24 @@ shape_config = {
     # 'HS_UNDERCUT' = hot swap underside with undercut. Does not generate properly.  Hot swap step needs to be modified.
     # 'HS_NOTCH' = hot swap underside with notch.  Does not generate properly.  Hot swap step needs to be modified.
     # 'plate_style':  'NUB',
-    'plate_style': 'NOTCH',
+      'plate_style': 'HS_NUB',
 
-    'hole_keyswitch_height':  14.0,
-    'hole_keyswitch_width':  14.0,
+      'hole_keyswitch_height':  14.0,
+      'hole_keyswitch_width':  14.0,
 
-    'nub_keyswitch_height':  14.4,
-    'nub_keyswitch_width':  14.4,
+      'nub_keyswitch_height':  14.4,
+      'nub_keyswitch_width':  14.4,
 
-    'undercut_keyswitch_height':  14.0,
-    'undercut_keyswitch_width':  14.0,
-    'notch_width': 6.0, # If using notch, it is identical to undecut, but only locally by the switch clip
+      'undercut_keyswitch_height':  14.0,
+      'undercut_keyswitch_width':  14.0,
+      'notch_width': 6.0, # If using notch, it is identical to undecut, but only locally by the switch clip
 
-    'sa_profile_key_height':  12.7,
-    'sa_length': 18.5,
-    'sa_double_length': 37.5,
-    'plate_thickness':  4 + 1.1,
+      'sa_profile_key_height':  12.7,
+      'sa_length': 18.5,
+      'sa_double_length': 37.5,
+      'plate_thickness':  4 + 1.1,
 
-    'plate_rim': 1.5 + 0.5,
+      'plate_rim': 1.5 + 0.5,
     # Undercut style dimensions
     'clip_thickness':  1.1,
     'clip_undercut':  1.0,
@@ -273,7 +273,7 @@ shape_config = {
     # 'SLIDING' = Features to slide the OLED in place and use a pin or block to secure from underneath.
     # 'CLIP' = Features to set the OLED in a frame a snap a bezel down to hold it in place.
 
-    'oled_mount_type':  'CLIP',
+    'oled_mount_type':  'NONE',
     'oled_center_row': 1.25, # if not None, this will override the oled_mount_location_xyz and oled_mount_rotation_xyz settings
     'oled_translation_offset': (0, 0, 4), # Z offset tweaks are expected depending on curvature and OLED mount choice.
     'oled_rotation_offset': (0, 0, 0),
@@ -353,9 +353,9 @@ shape_config = {
         }
     },
 
-    'screws_offset': 'INSIDE', # 'OUTSIDE', 'INSIDE', 'ORIGINAL'
+    'screws_offset': 'ORIGINAL', # 'OUTSIDE', 'INSIDE', 'ORIGINAL'
 
-    'screw_insert_height': 3.8,
+    'screw_insert_height': 3.6,
 
     # 'screw_insert_bottom_radius': 5.31 / 2,  #Designed for inserts
     # 'screw_insert_top_radius': 5.1 / 2,  #Designed for inserts
@@ -363,12 +363,12 @@ shape_config = {
     'screw_insert_bottom_radius': 2.5 / 2,  # Designed for self tapping
     'screw_insert_top_radius': 2.5 / 2,  # Designed for self tapping
 
-    'screw_insert_outer_radius': 4.25,  # Common to keep interface to base
+    'screw_insert_outer_radius': 4.7,  # Common to keep interface to base
 
     # Does anyone even use these?  I think they just get in the way.
-    'wire_post_height': 7,
-    'wire_post_overhang': 3.5,
-    'wire_post_diameter': 2.6,
+    #'wire_post_height': 7,
+    #'wire_post_overhang': 3.5,
+    #'wire_post_diameter': 2.6,
 
 
 
@@ -429,7 +429,7 @@ shape_config = {
     ###################################
     ## HOLES ON PLATE FOR PCB MOUNT
     ###################################
-    'plate_holes':  True,
+    'plate_holes':  False,
     'plate_holes_xy_offset': (0.0, 0.0),
     'plate_holes_width': 14.3,
     'plate_holes_height': 14.3,
@@ -457,13 +457,23 @@ shape_config = {
     ## COLUMN OFFSETS
     ####################################
 
-    'column_offsets':  [
+    # 'column_offsets':  [
+    #     [0, 0, 0],
+    #     [0, 0, 0],
+    #     [0, 2.82, -4.5],
+    #     [0, 0, 0],
+    #     [0, -6, 5],# REDUCED STAGGER
+    #     [0, -6, 5],# REDUCED STAGGER
+    #     [0, -6, 5],# NOT USED IN MOST FORMATS (7th column)
+    # ],
+
+     'column_offsets':  [
         [0, 0, 0],
         [0, 0, 0],
-        [0, 2.82, -4.5],
+        [0, 2.82, -6.5],
         [0, 0, 0],
-        [0, -6, 5],# REDUCED STAGGER
-        [0, -6, 5],# REDUCED STAGGER
+        [0, -13, 6],# REDUCED STAGGER
+        [0, -13, 6],# REDUCED STAGGER
         [0, -6, 5],# NOT USED IN MOST FORMATS (7th column)
     ],
 
